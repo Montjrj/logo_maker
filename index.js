@@ -56,6 +56,21 @@ function init() {
     inquirer
         .prompt(questions).then((data) => {
             const { text, textColor, shapeClass, shapeColor } = data 
+
+            let svgShapeContent
+            switch (shapeClass) {
+                case "Circle": 
+                    svgShapeContent = new Circle()
+                    break;
+                case "Triangle": 
+                    svgShapeContent = new Triangle()
+                    break; 
+                case "Square": 
+                    svgShapeContent = new Square()
+                    break;
+            }
+            svgShapeContent.setColor(shapeColor)
+
         })
 }
 
