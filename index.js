@@ -1,6 +1,6 @@
 const inquirer =require("inquirer"); 
-const fs = require("fs"); 
-const path = require("path"); 
+const fs = require('fs'); 
+const path = require ('path'); 
 const { Circle, Triangle, Square } = require("./lib/shapes")
 const  Text = require("./lib/text")
 
@@ -51,7 +51,18 @@ const questions = [
 
 ];
 
-// write to file function 
+
+function writeToFile(fileName, combinedSvgContent) {
+    const discFolder = "disc";
+    const filePath = path.join(__dirname, discFolder, fileName);
+    fs.writeFile(filePath, combinedSvgContent, (err) => {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log(`SVG file successfully generated in the ${discFolder} folder.`)
+      }
+    });
+  }
 
 function init() {
     inquirer
@@ -80,8 +91,8 @@ function init() {
 
             const combinedSvgContent = `
             ${svgStarterTag}
-            ${svgShapeContent}
-            ${svgTextContent}
+            ${svgShapeContent.render()}
+            ${svgTextContent.render()}
             ${svgEndTag}
             `
             const fileName = 'logo.svg'
