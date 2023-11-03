@@ -2,6 +2,7 @@ const inquirer =require("inquirer");
 const fs = require("fs"); 
 const path = require("path"); 
 const { Circle, Triangle, Square } = require("./lib/shapes")
+const  Text = require("./lib/text")
 
 const questions = [
 
@@ -70,7 +71,26 @@ function init() {
                     break;
             }
             svgShapeContent.setColor(shapeColor)
+            let svgTextContent = new Text()
+            svgTextContent.setText(text);
+            svgTextContent.setTextColor(textColor); 
 
+            const svgStarterTag = '<svg width="300px" height="200px"  xmlns="http://www.w3.org/2000/svg">'
+            const svgEndTag = '</svg>'
+
+            const combinedSvgContent = `
+            ${svgStarterTag}
+            ${svgShapeContent}
+            ${svgTextContent}
+            ${svgEndTag}
+            `
+            const fileName = 'logo.svg'
+            
+            writeToFile(fileName, combinedSvgContent)
+        })
+        .catch((err) => {
+
+            console.error(err)
         })
 }
 
