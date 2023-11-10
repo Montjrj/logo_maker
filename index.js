@@ -107,7 +107,3 @@ function init() {
 
 init(); 
 
-
-/* <svg width="300px" height="200px"  xmlns="http://www.w3.org/2000/svg">
-<circle cx="155" cy="100" r="90" fill="black" /> <text x="75" y="125" font-family="Sans-serif" font-size="75" fill="navy">RJM</text>
-</svg> */

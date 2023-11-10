@@ -4,12 +4,13 @@ describe("Circle", () => {
 
     describe("render", () => {
         it("should render a circle svg", () => {
+            const color = "purple"
             const circle = new Circle();
-            circle.setColor("purple");
+            circle.setColor(color);
             let svgShapeString = circle.render();
 
             // Adjust the expected SVG string for a circle
-            expect(svgShapeString).toContain('<circle cx="155" cy="100" r="90" fill="purple" />');
+            expect(svgShapeString).toContain(`<circle cx="155" cy="100" r="90" fill="${color}" />`);
         });
     });
 });
